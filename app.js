@@ -1,15 +1,20 @@
-const express = require('express');
+const express = require('express')
 const app = express()
 const port = 3000
-const routes = require('./routers/index');
+const router = require('./router/index')
 const session = require('express-session')
 
 app.set('view engine', 'ejs')
-app.use(express.urlencoded({ extended: true }))
-app.use(routes)
+app.use(express.urlencoded({ extended:false }))
+app.use(router)
 
-app.use()
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 app.listen(port, () => {
-    console.log(`listen to port ${port}`)
+  console.log(`Example app listening on port ${port}`)
 })
