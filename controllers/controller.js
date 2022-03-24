@@ -18,7 +18,6 @@ class Controller {
             if(user){
                 const isValidPassword = bcryptjs.compareSync(password, user.password)
                 if(isValidPassword){
-                    console.log(req.session)
                     req.session.UserId = user.id
                     return res.redirect('/direct')
                 } else {
