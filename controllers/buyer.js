@@ -24,8 +24,8 @@ class Controller{
             })
             .then(data => {
                 product = data
-    
-                return User.findAll({
+                console.log(req.session.UserId)
+                return User.findByPk(req.session.UserId, {
                     include: [
                         {
                             model: Wallet
@@ -34,24 +34,18 @@ class Controller{
                 })  
             })
             .then(user => {
+                console.log(user, "<<<<<<<<<<<")
                 res.render('buyer/showProduct', { product, user })
             })
             .catch(error => {
                 res.send(error)
             })
         }else{
-            Product.productOutOfStock({
-                include: [
-                    {
-                        model: Category
-                    },
-                ],
-                order: [['name', 'ASC']]
-            })
+            Product.productOutOfStock()
             .then(data => {
                 product = data
     
-                return User.findAll({
+                return User.findByPk(req.session.UserId, {
                     include: [
                         {
                             model: Wallet
@@ -60,6 +54,7 @@ class Controller{
                 })  
             })
             .then(user => {
+                console.log(user)
                 res.render('buyer/showProduct', { product, user })
             })
             .catch(error => {
@@ -69,7 +64,7 @@ class Controller{
     }
 
     static topUp(req, res){ //!topUp
-        Wallet.findAll()
+        Wallet.findByPk(req.session.UserId)
         .then(data => {
             res.render('buyer/topUp', { data })
         })

@@ -20,14 +20,18 @@
             <li class="nav-item">
               <a class="nav-link" href="/register">register</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
           </ul> 
         </div>
     </nav>
     <h1>List Product</h1>
-    <form class="d-flex" action="/home/?search=" method="GET">
-        <input type="search" name="search1" id="search" placeholder="Search for Product" class="search"/>
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
+    <div>
+      <h6>sort by</h6>
+      <a href="/seller/product/?sort=stock" class="btn btn-success" type="button">stock</a>
+      <a href="/seller/product/?sort=price" class="btn btn-success" type="button">price</a>
+    </div>
     <a class="btn btn-secondary" href="/seller/product/add" role="button">Add Product</a>
     <table class="table table-primary table-striped">
         <thead>

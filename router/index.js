@@ -10,7 +10,7 @@ router.get('/register', Controller.registerForm)
 router.post('/register', Controller.registered)
 router.get('/login', Controller.loginForm)
 router.post('/login', Controller.logedIn)
-router.get('/direct', Controller.direct)
+router.get('/logout', Controller.logout)
 router.get('/', Controller.home)
 
 router.use('/buyer', buyer)

@@ -3,9 +3,18 @@ const { Op, where } = require('sequelize')
 
 class Controller {
     static showAll(req, res) {
-        Product.findAll({
+        const sort = req.query.sort
+        let option = {
             include:[{model: Category}]
-        })
+        }
+
+        if(sort) {
+           option= {
+                ...option,
+                order: [[`${sort}`, 'ASC']]
+            }
+        }
+        Product.findAll(option)
         .then(data => {
             res.render('seller/sellerShowAll', { data })
         })

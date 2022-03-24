@@ -1,12 +1,10 @@
 <html>
     <body>
-        <% user.forEach(el => { %>
             <div type="card">
-                Username: <%= el.username %> <br>
-                Balance: <%= el.Wallet.dataValues.accountBalance %> 
+                Username: <%= user.username %> <br>
+                Balance: <%= user.Wallet.dataValues.accountBalance %> 
             </div>
-            <a href="/buyer/product/<%= el.id %> /wallet"><button>Top Up</button></a>
-        <% }) %>
+            <a href="/buyer/product/<%= user.id %> /wallet"><button>Top Up</button></a>
         <br>
         <br>
         <form action="/buyer/product?name=name">
