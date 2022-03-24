@@ -2,9 +2,9 @@
     <body>
         <h1>SUSGSTORE TOPUP</h1>
 
-        <form action="buyer/product/wallet", method="post">
+        <form action="/buyer/product/<%= data[0].id %> /wallet", method="post">
             <Label>Balance</Label><br><br>
-            <select name="accountBalance">
+            <select name="balance">
                 <option selected disabled>Pilih Nominal TopUp</option>
                 <option value="100">100</option>
                 <option value="300">300</option>
@@ -14,7 +14,7 @@
                 <option value="1000">1000</option>
             </select><br><br>
             <button type="submit">Buy</button>
-            <a href="buyer/product"><button type="button">Cancel</button></a>
+            <a href="/buyer/product"><button type="button">Cancel</button></a>
         </form>
     </body>
 </html>

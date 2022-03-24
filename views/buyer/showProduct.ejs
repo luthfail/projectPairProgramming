@@ -5,7 +5,7 @@
                 Username: <%= el.username %> <br>
                 Balance: <%= el.Wallet.dataValues.accountBalance %> 
             </div>
-            <a href="buyer/product/wallet"><button>Top Up</button></a>
+            <a href="/buyer/product/<%= el.id %> /wallet"><button>Top Up</button></a>
         <% }) %>
         <table border="1">
             <tr>
@@ -26,7 +26,11 @@
                     <td><%= el.description %></td>
                     <td><%= el.Category.dataValues.name %> </td>
                     <td>
-                        <a href="buyer/product/buy/<%= el.id %> "><button>Buy</button></a>
+                    <% if (el.stock > 0) { %>
+                        <a href="/buyer/product/buy/<%= el.id %> "><button>Buy</button></a>
+                    <% } else if (el.stock === 0) { %>
+                        Out Of Stock
+                    <% } %>
                     </td>
                 </tr>
             <% }) %>

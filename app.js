@@ -6,7 +6,6 @@ const session = require('express-session')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended:false }))
-app.use(router)
 
 app.use(session({
   secret: 'secret',
@@ -14,6 +13,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false, sameSite: true },
 }))
+
+app.use(router)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -1,4 +1,6 @@
 const { Product, Category, User, Wallet, Transaction } = require('../models');
+const topUp = require('../helper/topUp');
+const buy = require('../helper/buy');
 
 class Controller{
     static showProduct(req, res){ //!show product
@@ -24,7 +26,7 @@ class Controller{
             })  
         })
         .then(user => {
-            res.render('showProduct', { product, user })
+            res.render('buyer/showProduct', { product, user })
         })
         .catch(error => {
             res.send(error)
@@ -32,21 +34,30 @@ class Controller{
     }
 
     static topUp(req, res){ //!topUp
-        res.render('topUp', )
+        Wallet.findAll()
+        .then(data => {
+            res.render('buyer/topUp', { data })
+        })
+        .catch(error => {
+            res.send(error)
+        })
     }
 
     static addTopUp(req, res){ //!add topup
-        const { accountBalance } = req.body
+        const { balance } = req.body
+        const id = req.params.id
 
-        Wallet.update({ accountBalance }, {
-            where: {
-                accountBalance: +accountBalance
-            }
+        Wallet.findByPk(id)
+        .then(data => {
+            return Wallet.update({ accountBalance: topUp(data.accountBalance, +balance) }, {
+                where: {id},
+            })
         })
         .then(() => {
-            res.redirect('buyer/product')
+            res.redirect('/buyer/product')
         })
         .catch(error => {
+            console.log(error)
             res.send(error)
         })
     }
@@ -63,7 +74,7 @@ class Controller{
             })
         })
         .then(() => {
-            res.redirect('buyer/product')
+            res.redirect('/buyer/product')
         })
         .catch(error => {
             res.send(error)
@@ -75,10 +86,8 @@ module.exports = Controller
 
 //! untuk buyer
 /**
- * edit profile (kalau udah beres semua)
  * read product
  * buy
- * top up 
  */
 
 
