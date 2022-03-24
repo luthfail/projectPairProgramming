@@ -44,13 +44,14 @@
                         <td><%= el.Category.dataValues.name %> </td>
                         <td>
                         <% if (el.stock > 0) { %>
-                            <a href="/buyer/product/buy/<%= el.id %> "><button>Buy</button></a>
+                            <a class="btn btn-success" href="/buyer/product/buy/<%= el.id %> ">Buy</a>
                         <% } else if (el.stock === 0) { %>
                             Out Of Stock
                         <% } %>
                         </td>
                     </tr>
                 <% }) %>
+
             </tbody>
         </table>
     </body>
