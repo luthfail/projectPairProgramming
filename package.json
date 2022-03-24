@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luthfail/projectPairProgramming.git"
   },
-  "keywords": [],
+  "keywords": [
+    "SusGamesStore",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -26,5 +30,8 @@
     "pg": "^8.7.3",
     "sequelize": "^6.17.0",
     "sequelize-cli": "^6.4.1"
+  },
+  "engines": {
+    "node": "16.13.1"
   }
 }
