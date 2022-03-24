@@ -29,7 +29,7 @@
         <tbody>
         <% data.forEach(el => { %>
             <tr>
-                <td><%= el.name %></td>
+                <td><%= el.name %> <img src="<%= el.Image %>" width="50" height="60"></td>
                 <td><%= el.stock %></td>
                 <td><%= el.currency() %></td>
                 <td><%= el.Category.name %></td>
