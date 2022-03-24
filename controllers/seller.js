@@ -34,8 +34,8 @@ class Controller {
     }
     
     static addProduct(req, res) {
-        const { name, stock, price, description, CategoryId } = req.body
-        Product.create({ name, stock, price, description, CategoryId })
+        const { name, stock, price, Image, description, CategoryId } = req.body
+        Product.create({ name, stock, price, Image, description, CategoryId })
         .then(() => {
             res.redirect('/seller/product')
         })
