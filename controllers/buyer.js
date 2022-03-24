@@ -152,15 +152,3 @@ class Controller{
 }
 
 module.exports = Controller
-
-//! untuk buyer
-/**
- * read product
- * buy
- */
-
-
-/** //!masalah
- * cara log out dan log in 
- * misahin akses
- */
