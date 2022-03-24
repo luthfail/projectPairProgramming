@@ -13,7 +13,6 @@ router.post('/login', Controller.logedIn)
 router.get('/direct', Controller.direct)
 router.get('/', Controller.home)
 
-
 router.use('/buyer', buyer)
 router.use('/seller', seller)
 
