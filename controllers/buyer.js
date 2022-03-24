@@ -126,12 +126,12 @@ class Controller{
             let transporter = nodemailer.createTransport({
                 service: "hotmail",
                 auth: {
-                    user: `susgamesstore@outlook.com`,
+                    user: `SusGamesStore@outlook.com`,
                     pass: 'BuatanMadeSamaLuthfy22',
                 },
             });
             let mailOptions = {
-                from: "susgamesstore@outlook.com",
+                from: "SusGamesStore@outlook.com",
                 to: `${req.session.email}`,
                 subject: "Register Success",
                 text: `Congratulations! You have successfully bought our games!`,
