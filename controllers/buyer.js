@@ -133,7 +133,7 @@ class Controller{
             let mailOptions = {
                 from: "SusGamesStore@outlook.com",
                 to: `${req.session.email}`,
-                subject: "Register Success",
+                subject: "Success Bought our games",
                 text: `Congratulations! You have successfully bought our games!`,
             };
             transporter.sendMail(mailOptions, function (err, succes) {
