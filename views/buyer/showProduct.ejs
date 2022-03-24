@@ -21,33 +21,37 @@
             <button type="submit">Search</button>
         </form>
         
-        <table border="1">
-            <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Stock</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Action</th>
-            </tr>
-            <% product.forEach((el, i) => { %>
+        <table  class="table table-primary table-striped">
+            <thead>
                 <tr>
-                    <td><%= i + 1 %></td>
-                    <td><%= el.name %></td>
-                    <td><%= el.stock %></td>
-                    <td><%= el.currency() %></td>
-                    <td><%= el.description %></td>
-                    <td><%= el.Category.dataValues.name %> </td>
-                    <td>
-                    <% if (el.stock > 0) { %>
-                        <a href="/buyer/product/buy/<%= el.id %> "><button>Buy</button></a>
-                    <% } else if (el.stock === 0) { %>
-                        Out Of Stock
-                    <% } %>
-                    </td>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Stock</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Action</th>
                 </tr>
-            <% }) %>
+            </thead>
+            <tbody>
+                <% product.forEach((el, i) => { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= el.name %></td>
+                        <td><%= el.stock %></td>
+                        <td><%= el.currency() %></td>
+                        <td><%= el.description %></td>
+                        <td><%= el.Category.dataValues.name %> </td>
+                        <td>
+                        <% if (el.stock > 0) { %>
+                            <a href="/buyer/product/buy/<%= el.id %> "><button>Buy</button></a>
+                        <% } else if (el.stock === 0) { %>
+                            Out Of Stock
+                        <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
         </table>
     </body>
 </html>
