@@ -61,6 +61,8 @@ class Controller {
             data.forEach(el => {
                 if(el.role === 'buyer'){
                     res.redirect('/buyer/product')
+                } else if(el.role === 'seller') {
+                    res.redirect('/seller/product')
                 }
             })
         })
