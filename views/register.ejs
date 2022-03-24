@@ -30,12 +30,8 @@
 <h1>SIGN UP</h1>
     <form action="/register" method="post">
         <div>
-            <label for="name">Name</label>
-            <input type="name" name="name" required>
-        </div>
-        <div>
-            <label for="profilePict">Profile Picture</label>
-            <input type="url" name="profilePict" required>
+            <label for="name">Username</label>
+            <input type="text" name="username" required>
         </div>
         <div>
             <label for="email">Email</label>
@@ -46,8 +42,8 @@
             <input type="password" name="password" required>
         </div>
         <div>
-        <label for="role">sign up as:</label>
-        <select name="Role">
+        <label>sign up as:</label>
+        <select name="role">
             <option value="seller">seller</option>
             <option value="buyer">buyer</option>
         </select>

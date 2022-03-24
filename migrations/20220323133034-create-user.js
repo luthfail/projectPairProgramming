@@ -17,7 +17,7 @@ module.exports = {
       role: {
         type: Sequelize.STRING
       },
-      usermame: {
+      username: {
         type: Sequelize.STRING
       },
       createdAt: {
