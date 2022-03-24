@@ -37,7 +37,7 @@
                 <% product.forEach((el, i) => { %>
                     <tr>
                         <td><%= i + 1 %></td>
-                        <td><%= el.name %></td>
+                        <td><%= el.name %> <img src="<%= el.Image %>" width="50" height="60"></td>
                         <td><%= el.stock %></td>
                         <td><%= el.currency() %></td>
                         <td><%= el.description %></td>
