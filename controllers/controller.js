@@ -22,7 +22,7 @@ class Controller {
                     return res.redirect('/direct')
                 } else {
                     const error = "invalid username/password"
-                    return res.redirect(`/loginForm?error=${error}`)
+                    return res.redirect(`/login?error=${error}`)
                 }
             }
 
