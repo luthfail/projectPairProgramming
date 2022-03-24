@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <% user.forEach(el => { %>
+            <div type="card">
+                Username: <%= el.username %> <br>
+                Balance: <%= el.Wallet.dataValues.accountBalance %> 
+            </div>
+            <a href="buyer/product/wallet"><button>Top Up</button></a>
+        <% }) %>
+        <table border="1">
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+            <% product.forEach((el, i) => { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= el.name %></td>
+                    <td><%= el.stock %></td>
+                    <td><%= el.price %></td>
+                    <td><%= el.description %></td>
+                    <td><%= el.Category.dataValues.name %> </td>
+                    <td>
+                        <a href="buyer/product/buy/<%= el.id %> "><button>Buy</button></a>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </body>
+</html>

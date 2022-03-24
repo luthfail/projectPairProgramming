@@ -9,6 +9,8 @@ const Controller = require('../controllers/controller')
 router.get('/register', Controller.registerForm)
 router.post('/register', Controller.registered)
 router.get('/login', Controller.loginForm)
+router.get('/', Controller.loginForm)
+
 
 router.use('/', buyer)
 router.use('/', seller)

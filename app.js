@@ -11,8 +11,8 @@ app.use(router)
 app.use(session({
   secret: 'secret',
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+  saveUninitialized: false,
+  cookie: { secure: false, sameSite: true },
 }))
 
 app.listen(port, () => {

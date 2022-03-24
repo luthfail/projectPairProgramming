@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Wallet } = require('../models');
 const bcryptjs = require('bcryptjs');
 
 class Controller {
@@ -14,6 +14,7 @@ class Controller {
             if(user){
                 const isValidPassword = bcryptjs.compareSync(password, user.password)
                 if(isValidPassword){
+                    req.session.UserId = user.id
                     return res.redirect('/')
                 } else {
                     const error = "invalid username/password"
@@ -37,6 +38,12 @@ class Controller {
 
         User.create({username, profilePict, email, password, role})
         .then(newUser => {
+            return Wallet.create({
+                UserId: newUser.id,
+                accountBalance: 0
+            })
+        })
+        .then(() => {
             res.redirect('/login')
         })
         .catch(err => {

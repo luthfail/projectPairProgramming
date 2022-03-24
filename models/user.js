@@ -22,7 +22,10 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     email: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: {
+        args: true,
+        msg: 'email already exsist'
+      },
       allowNull: false,
       validate: {
         notEmpty: {
@@ -62,7 +65,10 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        args: true,
+        msg: 'username already exsist'
+      }, 
       validate: {
         notEmpty: {
           msg: `cant be empty`
