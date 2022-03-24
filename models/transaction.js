@@ -10,20 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Transaction.belongsTo(models.Product, { 
-        foreignKey: "ProductId",
-        targetKey: "id"
-      });
-      Transaction.belongsTo(models.User, { 
-        foreignKey: "UserId",
-        targetKey: "id"
-      });
+      // define association here
     }
   }
   Transaction.init({
     ProductId: DataTypes.INTEGER,
-    UserId: DataTypes.INTEGER,
-    Price: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Transaction',
