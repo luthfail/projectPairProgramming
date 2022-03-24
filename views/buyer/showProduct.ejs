@@ -25,6 +25,7 @@
             <thead>
                 <tr>
                     <th>No</th>
+                    <th>img</th>
                     <th>Name</th>
                     <th>Stock</th>
                     <th>Price</th>
@@ -37,7 +38,8 @@
                 <% product.forEach((el, i) => { %>
                     <tr>
                         <td><%= i + 1 %></td>
-                        <td><%= el.name %> <img src="<%= el.Image %>" width="50" height="60"></td>
+                        <td><img src="<%= el.Image %>" width="50" height="60"></td>
+                        <td><%= el.name %></td>
                         <td><%= el.stock %></td>
                         <td><%= el.currency() %></td>
                         <td><%= el.description %></td>
