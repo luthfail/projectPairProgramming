@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    currency() {
+      return new Intl.NumberFormat('us-US', { style: 'currency', currency: 'USD' }).format(this.price)
+    }
     static associate(models) {
       Product.belongsTo(models.Category, { foreignKey: 'CategoryId' })
       Product.belongsToMany(models.User, {

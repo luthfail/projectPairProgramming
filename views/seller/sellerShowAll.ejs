@@ -8,24 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link active p-3 mb-2 bg-primary text-white" aria-current="page" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
-          </ul> 
-        </div>
-    </nav>
+  <%- include('../partial/navbar') %> 
     <h1>List Product</h1>
     <div>
       <h6>sort by</h6>
@@ -48,7 +31,7 @@
             <tr>
                 <td><%= el.name %></td>
                 <td><%= el.stock %></td>
-                <td><%= el.price %></td>
+                <td><%= el.currency() %></td>
                 <td><%= el.Category.name %></td>
                 <td>
                     <a class="btn btn-secondary" href="/seller/product/<%= el.id %>" role="button">Detail</a>

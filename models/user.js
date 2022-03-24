@@ -11,13 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    get invoice() {
-      return Transaction.findAll({
-        where: {
-          id: this.id
-        }
-      })
-    }
     static associate(models) {
       User.hasOne(models.Wallet)
       User.belongsToMany(models.Product, {
