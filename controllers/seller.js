@@ -63,8 +63,8 @@ class Controller {
 
     static editProduct(req, res) {
         const id =  req.params.id
-        const { name, stock, price, description, CategoryId } = req.body
-        Product.update({ name, stock, price, description, CategoryId }, {where: { id: id}} )
+        const { name, stock, price, Image, description, CategoryId } = req.body
+        Product.update({ name, stock, price, Image, description, CategoryId }, {where: { id: id}} )
         .then(() => {
             res.redirect('/seller/product')
         })
