@@ -1,7 +1,11 @@
-const { User } = require('../models');
+const { User, Wallet } = require('../models');
 const bcryptjs = require('bcryptjs');
 
 class Controller {
+    static home(req, res){
+        res.render('home')
+    }
+
     static loginForm(req, res) {
         res.render('login')
     }
@@ -14,7 +18,8 @@ class Controller {
             if(user){
                 const isValidPassword = bcryptjs.compareSync(password, user.password)
                 if(isValidPassword){
-                    return res.redirect('/')
+                    req.session.UserId = user.id
+                    return res.redirect('/direct')
                 } else {
                     const error = "invalid username/password"
                     return res.redirect(`/loginForm?error=${error}`)
@@ -22,7 +27,7 @@ class Controller {
             }
 
         })
-        .carch(err =>{
+        .catch(err =>{
             res.send(err)
         })
     }
@@ -37,10 +42,30 @@ class Controller {
 
         User.create({username, profilePict, email, password, role})
         .then(newUser => {
+            return Wallet.create({
+                UserId: newUser.id,
+                accountBalance: 0
+            })
+        })
+        .then(() => {
             res.redirect('/login')
         })
         .catch(err => {
             res.send(err)
+        })
+    }
+
+    static direct(req, res){
+        User.findAll()
+        .then(data => {
+            data.forEach(el => {
+                if(el.role === 'buyer'){
+                    res.redirect('/buyer/product')
+                }
+            })
+        })
+        .catch(error => {
+            res.send(error)
         })
     }
 }

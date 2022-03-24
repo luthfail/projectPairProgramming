@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       accountBalance: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        defaultValue: 0 
       },
       UserId: {
         type: Sequelize.INTEGER,
