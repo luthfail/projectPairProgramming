@@ -33,9 +33,9 @@ class Controller {
 
     static registered(req, res) {
 
-        const {username, profilePict, email, password, role} = req.body
+        const {name, profilePict, email, password, Role} = req.body
 
-        User.create({username, profilePict, email, password, role})
+        User.create({name, profilePict, email, password, Role})
         .then(newUser => {
             res.redirect('/login')
         })

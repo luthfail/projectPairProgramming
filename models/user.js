@@ -12,67 +12,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.hasOne(models.Wallet)
-      User.belongsToMany(models.Product, {
-        through: models.Transaction,
-        foreignKey: "UserId"
-      });
+      // define association here
     }
   }
   User.init({
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: `cant be empty`
-        },
-        notNull: {
-          msg: `cant be empty`
-        }
-      }
-    }, 
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: `cant be empty`
-        },
-        notNull: {
-          msg: `cant be empty`
-        }
-      }
-
-    }, 
-    role: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: `cant be empty`
-        },
-        notNull: {
-          msg: `cant be empty`
-        }
-      }
-
-    }, 
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: {
-          msg: `cant be empty`
-        },
-        notNull: {
-          msg: `cant be empty`
-        }
-      }
-
-    }, 
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    role: DataTypes.STRING,
+    usermame: DataTypes.STRING
   }, {
     hooks: {
       beforeCreate(instance, options){
