@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const { Op } =require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     /**
@@ -16,13 +18,26 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "ProductId"
       });
     }
+    static productOutOfStock(){
+      return Product.findAll({
+        where: {
+          stock: {
+            [Op.gt]: 0
+          }
+        },
+        order: [['name', 'ASC']],
+        include: [sequelize.models.Category]
+      })
+    }
+
   }
   Product.init({
     name: DataTypes.STRING,
     stock: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     description: DataTypes.TEXT,
-    CategoryId: DataTypes.INTEGER
+    CategoryId: DataTypes.INTEGER,
+    Image: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Product',

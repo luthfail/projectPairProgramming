@@ -9,8 +9,12 @@ const Controller = require('../controllers/controller')
 router.get('/register', Controller.registerForm)
 router.post('/register', Controller.registered)
 router.get('/login', Controller.loginForm)
+router.post('/login', Controller.logedIn)
+router.get('/direct', Controller.direct)
+router.get('/', Controller.home)
 
-router.use('/', buyer)
-router.use('/', seller)
+
+router.use('/buyer', buyer)
+router.use('/seller', seller)
 
 module.exports = router;
